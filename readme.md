@@ -85,7 +85,7 @@ We'll be producing 2 isolated ubuntu environments. One to represent a system whi
       * ```VOLUME /project```
 
   * run ```build.bat/sh```
-* to test search paths used for a different binary such as librdkafka++.so
+* example of listing search paths for a different library such as the dependency librdkafka++.so
   ```
   LD_DEBUG=libs ldd /project/test-2.4.2/node_modules/node-rdkafka/build/deps/librdkafka++.so
   ```
