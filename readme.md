@@ -22,7 +22,7 @@ We'll be producting 2 isolated ubuntu environments. One to represent a system wh
 * [for windows](https://docs.docker.com/docker-for-windows/install/)
 
 2. clone this project
-3. run build:
+3. run build (only needed initially if only running tests)
    *  windows:
       * build.bat
    *  linux:
@@ -50,7 +50,7 @@ We'll be producting 2 isolated ubuntu environments. One to represent a system wh
        * test-2.5.1
 2. test flow
    * When either test-no-lib-issue or test-wrong-lib-issue is run the following process is performed
-     1. a docker container is launch with the desired starting environment
+     1. a temporary docker container is launched with the desired starting environment
      2. start.sh is run within the docker container
         1. each test area has its node_modules folder removed. Note: This is needed to ensure a clean build of node-rdkafka for each version.
         2. each test area has its modules installed/built
