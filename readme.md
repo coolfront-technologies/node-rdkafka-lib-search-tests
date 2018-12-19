@@ -1,19 +1,17 @@
 # node-rdkafka lib search tests
 
 ## Purpose
-The purpose of this project is to share a solution used to test for unexpected results when node-rdkafka searches for a library on an ubuntu 18 system.
+The purpose of this project is to share a solution used to test for unexpected results when node-rdkafka searches for librdkafka.so.1 on an ubuntu 18 system.
 
-## Concept
-Using controlled ubuntu systems via docker and isolated  node-rdkafka versions we then check how the generated binaries search for librdkafka.so.1
+## Implementation Overview
+To accomplish this for multple versions of node-rdkafka and in an attempt to reduce steps we are using docker to supply the controlled ubuntu images and mocha to report on behavior expectations. Mocha will run the cli commands to dump the search paths used and then analyse the text output. Its not a perfect solution, but should hit on 2 goals which are to show lib search issues if present and share an approach to test such things which are dependant on os/machine setup specifics.
+
+We'll be producing 2 isolated ubuntu environments. One to represent a system which does not have librdkafak.so.1 present already and another which does. For the latter, the system will have the tool kafkacat preinstalled.
 
  ```
   #example of raw cli command to list library search paths used
   LD_DEBUG=libs ldd /project/test-2.4.2/node_modules/node-rdkafka/build/Release/node-librdkafka.node
-```
-## Implementation Overview
-To accomplish this for multple versions of node-rdkafka and in an attempt to reduce steps we are using docker for the controlled ubuntu images and mocha to report on behavior expectations. Its not a perfect solution, but should hit on 2 goals which are to show lib search issues if present and share an approach to test such things which are dependant on os/machine setup specifics.
-
-We'll be producting 2 isolated ubuntu environments. One to represent a system which does not have librdkafak.so.1 present already and another which does. For this effect the system will have the tool kafkacat preinstalled.
+ ```
 
 ## Getting started
 
