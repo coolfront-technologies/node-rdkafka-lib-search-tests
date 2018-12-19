@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 #clean out images. Added this for safety due to some perceived issues with --no-cache
 docker image rm mike-coolfront/librdkafka-no-lib-issue
 docker image rm mike-coolfront/librdkafka-wrong-lib-issue

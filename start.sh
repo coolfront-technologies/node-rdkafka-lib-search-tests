@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 #clean house to ensure expected start point
 rm -rdf ./test-2.4.2/node_modules
 rm -rdf ./test-2.5.0/node_modules
