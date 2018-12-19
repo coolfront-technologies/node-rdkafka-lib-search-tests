@@ -34,7 +34,7 @@ We'll be producing 2 isolated ubuntu environments. One to represent a system whi
      * test-wrong-lib-issue.sh
 
 ## Under the hood
-1. build.bat/sh
+1. What does build.bat/sh do?
    * builds 2 images:
      * mike-coolfront/librdkafka-no-lib-issue
      * mike-coolfront/librdkafka-wrong-lib-issue
@@ -46,14 +46,35 @@ We'll be producing 2 isolated ubuntu environments. One to represent a system whi
        * test-2.4.2
        * test-2.5.0
        * test-2.5.1
-2. test flow
-   * When either test-no-lib-issue or test-wrong-lib-issue is run the following process is performed
+2. What does test-no-lib-issue.bat/sh and test-wrong-lib-issue.bat/sh do?
+   * When either is run the following process is performed
      1. a temporary docker container is launched with the desired starting environment
-     2. start.sh is run within the docker container
-        1. each test area has its node_modules folder removed. Note: This is needed to ensure a clean build of node-rdkafka for each version.
-        2. each test area has its modules installed/built
-        3. each test area runs its test
+     2. start.sh is run within the docker container from either test-no-lib-issue or test-wrong-lib-issue
+        1. First start.sh will remove the node_modules folder if present.
+           * Note: This is needed to ensure a clean build of node-rdkafka for each version when using the VOLUME mount approach     mentioned in the Extras section.
+        2. Then it builds the node modules for test area
+        3. Then it runs the tests in each test area
 
+#Troubleshooting project
+1. if you run a non-windows host system and run into permission denied issues with the shell scripts then you can perform the following:
+   ```
+   > chmod 744 *.sh
+   > ./build.sh
+   ```
+
+2. if a temp container is some how still running you can perform the following:
+   * list your running docker containers
+   * then call docker stop using your the a part or all of the offending containr's ID
+   ```
+   > docker ps
+
+    | CONTAINER ID | IMAGE                                     | ... |
+    |--------------|-------------------------------------------|-----|
+    | 7DC34236E9D1 | mike-coolfront/librdkafka-wrong-lib-issue | ... |
+    | ...          | ...                                       | ... |
+
+   > docker stop 7DC3
+   ```
 
 ## Extras
 * to use a mounted volume for the project files
