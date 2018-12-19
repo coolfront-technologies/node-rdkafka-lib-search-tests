@@ -1,3 +1,4 @@
+#!bin/bash
 # used with volume mount approach
 # docker run -it --rm -v "$PWD:/project" mike-coolfront/librdkafka-no-lib-issue bash -c "./start.sh"
 
