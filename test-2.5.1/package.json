@@ -4,11 +4,13 @@
   "description": "sample project to show issue with librdkafka library pathing ",
   "main": "index.js",
   "dependencies": {
-    "node-rdkafka": "2.4.1"
+    "node-rdkafka": "2.5.1"
+    ,"mocha": "5.2.0"
+
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node_modules/mocha/bin/mocha test.js"
   },
   "author": "",
   "license": "ISC"

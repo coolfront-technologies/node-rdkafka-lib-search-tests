@@ -1,1 +1,0 @@
-require('@coolfront-npm/node-rdkafka')

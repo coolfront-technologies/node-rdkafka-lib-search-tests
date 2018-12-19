@@ -1,0 +1,6 @@
+#this extends the image used for testing the no librdkafka.so.1 found issue
+#by adding kafkacat,  module we know to add in the libarary to one of the system searched paths.
+
+FROM mike-coolfront/librdkafka-no-lib-issue
+
+RUN apt-get install -y kafkacat

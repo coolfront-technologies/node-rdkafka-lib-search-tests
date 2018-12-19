@@ -1,0 +1,17 @@
+{
+  "name": "librdkafka-issue",
+  "version": "1.0.0",
+  "description": "sample project to show issue with librdkafka library pathing ",
+  "main": "index.js",
+  "dependencies": {
+    "node-rdkafka": "2.5.0"
+    ,"mocha": "5.2.0"
+
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node_modules/mocha/bin/mocha test.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

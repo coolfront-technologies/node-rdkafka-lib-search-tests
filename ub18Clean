@@ -1,0 +1,21 @@
+#this image should exclude any packages which we know to preinclude librdkafka.so.1 such as kafkacat
+FROM ubuntu:18.04
+
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+RUN apt-get update --fix-missing
+
+RUN apt-get install -y curl
+RUN apt-get install -y python
+RUN apt-get install -y nano
+RUN apt-get install -y make
+RUN apt-get install -y gcc
+RUN apt-get install -y g++
+RUN apt-get install -y nodejs
+RUN apt-get install -y npm
+
+#for developement use VOLUME over COPY to avoid image rebuild time
+#VOLUME /project
+COPY ./ /project
+
+WORKDIR /project
+
