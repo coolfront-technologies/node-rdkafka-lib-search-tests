@@ -55,7 +55,7 @@ We'll be producing 2 isolated ubuntu environments. One to represent a system whi
         2. Then it builds the node modules for test area
         3. Then it runs the tests in each test area
 
-#Troubleshooting project
+# Troubleshooting project
 1. if you run a non-windows host system and run into permission denied issues with the shell scripts then you can perform the following:
    ```
    > chmod 744 *.sh
